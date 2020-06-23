@@ -1,31 +1,42 @@
 # currency-rate
-Service for converting currency value by currency rates
+Service for currency conversion based on rates from  `https://exchangeratesapi.io/`.
 
-Сервис для конвертации денежной суммы в валюте на основе курсов валют с сайта https://exchangeratesapi.io/
+`POST` request input parameters:
 
-Входные параметры POST запроса
+1) Base currency (optional field, default value - Ruble (RUB));
+2) **Target currency** (mandatory field);
+3) **Amount** (mandatory field);
+4) Date in YYYY-MM-DD format (optional field, default value - actual conversion rate for today).
 
-1)	Базовая валюта (необязательное поле, стандартное значение - Рубль);
-2)	Валюта конвертации (обязательное поле);
-3)	Сумма (обязательное поле);
-4)	Дата в формате YYYY-MM-DD (необязательное поле, стандартное значение - актуальный курс валют на сегодня).
+Names of parameters:
+- baseCurrency: string (Base currency)
+- targetCurrency: string (Target currency)
+- amount: number (Amount)
+- date: string (Conversion date)
 
-Названия параметров:
-- baseCurrency	string    Базовая валюта
-- targetCurrency	string    Валюта конвертации
-- amount	number    Сумма
-- date	string    Дата конвертации
+Example of request `POST` `http://localhost:8080/api/currency-conversion`:
+```
+{
+  "baseCurrency": "EUR",
+  "targetCurrency": "RUB",
+  "date": "2020-05-01", 
+  "amount": 1300
+}
+```
+# Curl example
+```
+curl -d '{"baseCurrency": "EUR", "targetCurrency": "RUB", "date": "2020-05-01", "amount": 1300}' -H "Content-Type: application/json" -X POST http://localhost:8080/api/currency-conversion
+```
 
+Once the application is launched, you can use Swagger: `http://localhost:8080/swagger-ui.html`.
+Conversion method: `/api/currency-conversion`
 
-После запуска приложения можно воспользоваться Swagger:  http://localhost:8080/swagger-ui.html
-Метод конвертации: /api/currency-conversion
+Output data in JSON format:
 
-Выходные данные в формате JSON:
-
-1)	Курс 
-  -	Базовая Валюта 
-  -	Валюта конвертации 
-  -	Значение базовой валюты
-  -	Значение валюты конвертации
-2)	Дата в формате YYYY-MM-DD;
-3)	Сумма после конвертации.
+1) Course 
+  - Base Currency 
+  - Conversion currency 
+  - Value of base currency
+  - Conversion currency value
+2) Date in YYYY-MM-DD format;
+3) Amount after conversion.
