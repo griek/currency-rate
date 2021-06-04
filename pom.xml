@@ -18,7 +18,7 @@
         <java.version>11</java.version>
         <swagger.version>2.9.2</swagger.version>
         <jackson.version>2.11.0</jackson.version>
-        <httpclient.version>4.5.12</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <com.google.guava.version>29.0-jre</com.google.guava.version>
         <org.junit.jupiter.version>5.6.2</org.junit.jupiter.version>
         <org.mockito.version>2.10.0</org.mockito.version>
